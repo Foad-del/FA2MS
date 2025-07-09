@@ -199,7 +199,7 @@ queryFn: () =>
       if (!res.ok) throw new Error("Failed to fetch methods");
       return res.json();
     })
-    .then(methods => ({ methods }))
+    .then(methods => methods)
     .catch(err => {
       console.error("Fetch error:", err);
     })
