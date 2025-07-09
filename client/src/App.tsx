@@ -27,4 +27,5 @@ function App() {
   );
 }
 
+// Trigger redeploy for methods.json
 export default App;
