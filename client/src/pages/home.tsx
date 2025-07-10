@@ -32,8 +32,13 @@ export default function Home() {
   });
 
   const { data: methods = [], isLoading, error } = useQuery<AsphaltMethod[]>({
-    queryKey: ["/api/asphalt-methods"],
-  });
+  queryKey: ["/api/asphalt-methods"],
+  queryFn: async () => {
+    const res = await fetch("/api/asphalt-methods");
+    if (!res.ok) throw new Error("Failed to fetch methods");
+    return res.json();
+  },
+});
 
   const filteredMethods = useMemo(() => {
     return methods.filter((method) => {
